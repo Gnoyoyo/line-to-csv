@@ -25,6 +25,7 @@ csv = open(outputFile + outputFileType ,'w', encoding = "utf-8")
 
 csv.write("date,time,name,message\n")
 text = file.readline().split()
+text[0] = text[0][1:]
 
 while len(text) != 0:
 
