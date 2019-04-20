@@ -32,15 +32,18 @@ while len(text) != 0:
         date = text[0]
         text = file.readline().split()
 
-    if timeFormat.match(text[0]):
+    if timeFormat.match(text[0]) is not None:
         time = text[0]
         name = text[1]
         message = seperator.join(text[2:len(text)])
+        text = file.readline().split()
 
-    else:
-        message = message + seperator.join(text[0:len(text)])
+    if len(text) != 0:
+        while dateFormat.match(text[0]) is None and timeFormat.match(text[0]) is None:
+            csv.write(date + "," + time + "," + name + "," + "\"" + message + "\"\n")
+            message = seperator.join(text[0:len(text)])
+            text = file.readline().split()
 
-    text = file.readline().split()
     csv.write(date + "," + time + "," + name + "," + "\"" + message + "\"\n")
 
 print("DONE")
