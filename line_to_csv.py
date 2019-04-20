@@ -34,5 +34,5 @@ while len(data) != 0:
         message = message + seperator.join(data[0:len(data)])
         text = file.readline()
         data = text.split()
-    csv.write(date+","+time+","+name+","+message+"\n")
+    csv.write(date+","+time+","+name+","+"\""+message+"\"\n")
 print("DONE")
