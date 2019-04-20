@@ -28,11 +28,9 @@ while len(data) != 0:
         time = data[0]
         name = data[1]
         message = seperator.join(data[2:len(data)])
-        text = file.readline()
-        data = text.split()
     else:
         message = message + seperator.join(data[0:len(data)])
-        text = file.readline()
-        data = text.split()
+    text = file.readline()
+    data = text.split()
     csv.write(date+","+time+","+name+","+"\""+message+"\"\n")
 print("DONE")
